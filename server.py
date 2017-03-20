@@ -1,5 +1,4 @@
-from flask import Flask, request, session, redirect, url_for, render_template
-from models import *
+import Flask
 
 app = Flask(__name__,template_folder="templates",static_folder="static")
 
