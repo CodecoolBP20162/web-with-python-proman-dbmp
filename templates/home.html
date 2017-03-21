@@ -2,22 +2,23 @@
 
 <h1>Test Home</h1>
 
-<a href="{{ url_for('card_menu') }}">
-    <div>Card menu</div>
-</a>
-
-
-<button id="adder">Clone</button>
+<svg id="adder" class="material" style="position:absolute;bottom:1vh;right:1vw;width:7%" viewBox="0 0 1 1">
+<circle cx="50%" cy="50%" r="50%" fill="black"/>
+<rect x="42.5%" y="25%" width="15%" height="50%" fill="white"/>
+<rect x="25%" y="42.5%" width="50%" height="15%" fill="white"/>
+</svg>
 
 <section>
 
     <div class="container">
         <div class="container-fluid">
             <div class="row" id="filler">
+               <div class="col-lg-3 col-md-4 col-xs-12 board material" id="board_template">
+                   <form>Name:<input type="text" name="card-name"></form>
+                   <button class="add_card">Add</button>
+                    <div class="card-entry"></div>
+               </div>
 
-
-
-            </div>
         </div>
     </div>
 </section>
