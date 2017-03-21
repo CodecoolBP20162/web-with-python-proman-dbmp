@@ -2,10 +2,6 @@
 
 <h1>Test Home</h1>
 
-<a href="{{ url_for('card_menu') }}">
-    <div>Card menu</div>
-</a>
-
 <svg id="adder" class="material" style="position:absolute;bottom:1vh;right:1vw;width:7%" viewBox="0 0 1 1">
 <circle cx="50%" cy="50%" r="50%" fill="black"/>
 <rect x="42.5%" y="25%" width="15%" height="50%" fill="white"/>
@@ -17,7 +13,7 @@
     <div class="container">
         <div class="container-fluid">
             <div class="row" id="filler">
-               <div class="col-lg-3 col-md-4 col-xs-12 board" id="board_template">
+               <div class="col-lg-3 col-md-4 col-xs-12 board material" id="board_template">
                    <form>Name:<input type="text" name="card-name"></form>
                    <button class="add_card">Add</button>
                     <div class="card-entry"></div>
