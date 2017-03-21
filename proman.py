@@ -14,12 +14,6 @@ def card_menu():
     #   Query az adott id-re     selected_question = Question.get(Question.id == question_id)
     return render_template('cards.html')
 
-"""
-@app.route('/<board_id>', methods=['GET'])
-def card_menu(board_id):
-    #   Query az adott id-re     selected_question = Question.get(Question.id == question_id)
-    return render_template('cards.html')
-"""
 
 if __name__ == "__main__":
     app.run(debug=True)
