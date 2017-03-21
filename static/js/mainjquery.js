@@ -2,13 +2,15 @@
  * Created by dry on 2017. 03. 20..
  */
 $(document).ready(function () {
-    var boardcard = '<div class="col-lg-3 col-md-4 col-xs-12 board"><p>Helloodasdad</p><button>save</button></div>';
-
+    var $template = $("#board_template")
+    var counter = 0;
+    $template.hide();
 
     $("#adder").click(function () {
-        $("#filler").append(boardcard);
+        $template.clone().attr("id", "board" + (++counter)).appendTo("#filler").show();
+        $("#board" + counter + " .add_card").click(function () {
+    	    var cardName = $('#board' + counter + ' input[name=card-name]').val();
+            $('#board' + counter + " .card-entry").append("<p>"+cardName+"</p>");
+        });
     });
 });
-
-
-
