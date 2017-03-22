@@ -1,15 +1,24 @@
 {% extends "layout.html" %} {% block title %}Home Menu{% endblock %} {% block content %}
 
-<h1>Test Home</h1>
+<input type="checkbox" id="menu-toggle"/>
+  <label id="trigger" for="menu-toggle"></label>
+  <label id="burger" for="menu-toggle"></label>
+  <ul id="menu" class="material">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Portfolio</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
 
-<svg id="adder" class="material" style="position:absolute;bottom:1vh;right:1vw;width:7%" viewBox="0 0 1 1">
-<circle cx="50%" cy="50%" r="50%" fill="black"/>
-<rect x="42.5%" y="25%" width="15%" height="50%" fill="white"/>
-<rect x="25%" y="42.5%" width="50%" height="15%" fill="white"/>
-</svg>
+
+<div class="logo">
+<input type="radio" class="radio" id="radio-1" name="group"/><label class="dot" for="radio-1"></label>
+<input type="radio" class="radio" id="radio-2" name="group"/><label class="dot" for="radio-2"></label>
+<input type="radio" class="radio" id="radio-3" name="group"/><label class="dot" for="radio-3"></label>
+<input type="radio" class="radio" id="radio-4" name="group"/><label class="dot" for="radio-4"></label>
+</div>
 
 <section>
-
     <div class="container">
         <div class="container-fluid">
             <div class="row" id="filler">
@@ -18,8 +27,13 @@
                    <button class="add_card">Add</button>
                     <div class="card-entry"></div>
                </div>
-
         </div>
     </div>
 </section>
+
+<svg id="adder" class="material button" viewBox="0 0 1 1">
+<circle cx="50%" cy="50%" r="50%" fill="black"/>
+<rect x="42.5%" y="25%" width="15%" height="50%" fill="white"/>
+<rect x="25%" y="42.5%" width="50%" height="15%" fill="white"/></svg>
+
 {% endblock %}
