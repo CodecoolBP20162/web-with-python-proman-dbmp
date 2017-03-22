@@ -10,8 +10,9 @@ function loader() {
 
     var retrievedObject = JSON.parse(localStorage.getItem("ObjectCollector"));
 
+    alert("sada");
 
-    for (var i = 0; i < retrievedObject.length; i++) {
+    for (var i = 0; i < (retrievedObject.length); i++) {
 
 
         if (retrievedObject[i].state === "new") {
@@ -70,9 +71,13 @@ function dragging() {
 
 $(document).ready(function () {
 
-    loader()
 
     adder()
+
+    
+    loader()
+
+
 
     dragging()
 
