@@ -26,11 +26,11 @@ a:focus{display:block;color:#333;background-color:#eee;transition:all .5s;}
 #burger,#burger:before,#burger:after{position:absolute;top:2vw;left:1vw;background:#03A9F4;width:3vw;height:.6vw;cursor:pointer;z-index:10;transition:1s ease;}
 #burger:before{content:"";top:-1vw;left:0vw}
 #burger:after{content:"";top:1vw;left:0vw}
-#menu-toggle:checked>#trigger+#burger{top:2.3vw;transform:rotate(180deg)}
-#menu-toggle:checked>#trigger+#burger:before{width:2vw;top:-2vw;transform:rotate(45deg) translateX(2vw)}
-#menu-toggle:checked>#trigger+#burger:after{width:2vw;top:2vw;transform:rotate(-45deg) translateX(2vw)}
 #menu-toggle:checked+#menu{animation:open 0.5s ease both;}
-#menu-toggle:checked+#menu+#options{display:block;}
+#menu-toggle:checked+#menu+#trigger+#burger{top:2.3vw;transform:rotate(180deg)}
+#menu-toggle:checked+#menu+#trigger+#burger:before{width:2vw;top:-2vw;transform:rotate(45deg) translateX(2vw)}
+#menu-toggle:checked+#menu+#trigger+#burger:after{width:2vw;top:2vw;transform:rotate(-45deg) translateX(2vw)}
+#menu-toggle:checked+#menu+#trigger+#burger+#options{display:block;}
 
 /* GOOGLE DOTS */
 @keyframes fade{0%,50%{opacity:0;transform:scale(0);}}
