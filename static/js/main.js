@@ -1,64 +1,69 @@
-function CardClass(id, text, state, board,) {
-    this.id = id;
-    this.text = text;
-    this.state = state;
-    this.board = board;
+function CardClass(CardId, CardText, CardState, CardBoard,) {
+    this.CardId = CardId;
+    this.CardText = CardText;
+    this.CardState = CardState;
+    this.CardBoard = CardBoard;
 };
 
-function loader() {
+function BoardClass(BoardId, BoardName,) {
+    this.BoardId = BoardId;
+    this.BoardName = BoardName;
+
+};
+
+function CardLoader() {
 
 
-    var retrievedObject = JSON.parse(localStorage.getItem("ObjectCollector"));
-
-    alert("sada");
-
-    for (var i = 0; i < (retrievedObject.length); i++) {
+    var retrievedCardObject = JSON.parse(localStorage.getItem("CardCollector"));
 
 
-        if (retrievedObject[i].state === "new") {
-            $("#newcollector").append("<li class='dragentries'><p>" + retrievedObject[i].text  + "</p><div class='trash' id='delete" + retrievedObject[i].id +"'></div><div class='edit' id='edit" + retrievedObject[i].id +"'></div></li>");
+    for (var i = 0; i < (retrievedCardObject.length); i++) {
 
-        }
 
-        else if (retrievedObject[i].board === "in-progress") {
-            $("#in-progesscollector").append("<li class='dragentries'><p>" + retrievedObject[i].text  + "</p><div class='trash' id='delete" + retrievedObject[i].id +"'></div><div class='edit' id='edit" + retrievedObject[i].id +"'></div></li>");
-
-        }
-
-        else if (retrievedObject[i].state === "review") {
-            $("#reviewcollector").append("<li class='dragentries'><p>" + retrievedObject[i].text  + "</p><div class='trash' id='delete" + retrievedObject[i].id +"'></div><div class='edit' id='edit" + retrievedObject[i].id +"'></div></li>");
+        if (retrievedCardObject[i].CardState === "new") {
+            $("#newcollector").append("<li class='dragentries'><p>" + retrievedCardObject[i].CardText  + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId +"'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId +"'></div></li>");
 
         }
 
-        else if (retrievedObject[i].state === "done") {
-            $("#donecollector").append("<li class='dragentries'><p>" + retrievedObject[i].text  + "</p><div class='trash' id='delete" + retrievedObject[i].id +"'></div><div class='edit' id='edit" + retrievedObject[i].id +"'></div></li>");
+        else if (retrievedCardObject[i].CardState === "in-progress") {
+            $("#in-progesscollector").append("<li class='dragentries'><p>" + retrievedCardObject[i].CardText  + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId +"'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId +"'></div></li>");
+
+        }
+
+        else if (retrievedCardObject[i].CardState === "review") {
+            $("#reviewcollector").append("<li class='dragentries'><p>" + retrievedCardObject[i].CardText  + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId +"'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId +"'></div></li>");
+
+        }
+
+        else if (retrievedCardObject[i].CardState === "done") {
+            $("#donecollector").append("<li class='dragentries'><p>" + retrievedCardObject[i].CardText  + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId +"'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId +"'></div></li>");
 
         }
 
     }
 }
 
-function adder() {
+function CardAdder() {
 
-    var counter = 1;
+    var CardCounter = 1;
 
-    var ObjectCollector = [];
+    var CardCollector = [];
 
-    $("#add_card").click(function () {
+    $("#add-card").click(function () {
 
-        var EntryObject = new CardClass(counter, $("#input-id").val(), "new", 1);
+        var CardObject = new CardClass(CardCounter, $("#input-id").val(), "new", 1);
 
-        ObjectCollector.push(EntryObject);
+        CardCollector.push(CardObject);
         
-        $("#newcollector").append("<li class='dragentries'><p>" + EntryObject.text  + "</p><div class='trash' id='delete" + EntryObject.id +"'></div><div class='edit' id='edit" + EntryObject.id +"'></div></li>");
+        $("#newcollector").append("<li class='dragentries'><p>" + CardObject.CardText  + "</p><div class='trash' id='delete" + CardObject.CardId +"'></div><div class='edit' id='edit" + CardObject.CardId +"'></div></li>");
 
-        localStorage.setItem('ObjectCollector', JSON.stringify(ObjectCollector));
+        localStorage.setItem('CardCollector', JSON.stringify(CardCollector));
 
-        counter++
+        CardCounter++
     });
 }
 
-function dragging() {
+function CardDragger() {
 
 
     $(".card-entry").sortable({
@@ -71,14 +76,14 @@ function dragging() {
 
 $(document).ready(function () {
 
+    CardDragger()
 
-    adder()
+    CardAdder()
 
     
-    loader()
+    CardLoader()
 
 
 
-    dragging()
 
 });
