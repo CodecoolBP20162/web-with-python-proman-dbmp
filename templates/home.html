@@ -1,14 +1,15 @@
 {% extends "layout.html" %} {% block title %}Home Menu{% endblock %} {% block content %}
 
 <input type="checkbox" id="menu-toggle"/>
-  <label id="trigger" for="menu-toggle"></label>
-  <label id="burger" for="menu-toggle"></label>
-  <ul id="menu" class="material">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Portfolio</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
+<label for="menu-toggle" id="menu" class="material">
+    <div id="trigger"></div>
+    <div id="burger"></div>
+</label>
+<ul id="options">
+    <li><a href="#">Project Manager</a></li>
+    <li><a href="#">Save offline</a></li>
+    <li><a href="#">Save online</a></li>
+</ul>
 
 
 <div class="logo">
