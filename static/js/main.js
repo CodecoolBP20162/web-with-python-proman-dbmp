@@ -1,5 +1,6 @@
-function CardClass(info, state, board,) {
-    this.info = info;
+function CardClass(id, text, state, board,) {
+    this.id = id;
+    this.text = text;
     this.state = state;
     this.board = board;
 };
@@ -14,22 +15,22 @@ function loader() {
 
 
         if (retrievedObject[i].state === "new") {
-            $("#newcollector").append("<li class='dragentries'><p>" + retrievedObject[i].info + "</p></li>");
+            $("#newcollector").append("<li class='dragentries'><p>" + retrievedObject[i].text  + "</p><div class='trash' id='delete" + retrievedObject[i].id +"'></div><div class='edit' id='edit" + retrievedObject[i].id +"'></div></li>");
 
         }
 
         else if (retrievedObject[i].board === "in-progress") {
-            $("#in-progesscollector").append("<li class='dragentries'><p>" + retrievedObject[i].info + "</p></li>");
+            $("#in-progesscollector").append("<li class='dragentries'><p>" + retrievedObject[i].text  + "</p><div class='trash' id='delete" + retrievedObject[i].id +"'></div><div class='edit' id='edit" + retrievedObject[i].id +"'></div></li>");
 
         }
 
         else if (retrievedObject[i].state === "review") {
-            $("#reviewcollector").append("<li class='dragentries'><p>" + retrievedObject[i].info + "</p></li>");
+            $("#reviewcollector").append("<li class='dragentries'><p>" + retrievedObject[i].text  + "</p><div class='trash' id='delete" + retrievedObject[i].id +"'></div><div class='edit' id='edit" + retrievedObject[i].id +"'></div></li>");
 
         }
 
         else if (retrievedObject[i].state === "done") {
-            $("#donecollector").append("<li class='dragentries'><p>" + retrievedObject[i].info + "</p></li>");
+            $("#donecollector").append("<li class='dragentries'><p>" + retrievedObject[i].text  + "</p><div class='trash' id='delete" + retrievedObject[i].id +"'></div><div class='edit' id='edit" + retrievedObject[i].id +"'></div></li>");
 
         }
 
@@ -38,20 +39,21 @@ function loader() {
 
 function adder() {
 
+    var counter = 1;
 
     var ObjectCollector = [];
 
     $("#add_card").click(function () {
 
-        var EntryObject = new CardClass($("#input-id").val(), "new", 1);
+        var EntryObject = new CardClass(counter, $("#input-id").val(), "new", 1);
 
         ObjectCollector.push(EntryObject);
-
-        var cardName = $("#input-id").val();
-        $("#newcollector").append("<li class='dragentries'><p>" + cardName + "</p></li>");
+        
+        $("#newcollector").append("<li class='dragentries'><p>" + EntryObject.text  + "</p><div class='trash' id='delete" + EntryObject.id +"'></div><div class='edit' id='edit" + EntryObject.id +"'></div></li>");
 
         localStorage.setItem('ObjectCollector', JSON.stringify(ObjectCollector));
 
+        counter++
     });
 }
 
@@ -75,6 +77,3 @@ $(document).ready(function () {
     dragging()
 
 });
-
-
-

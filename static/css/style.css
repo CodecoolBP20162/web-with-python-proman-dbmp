@@ -26,13 +26,29 @@ header {
 
 
 ul li {
-    text-align: center;
     border: 1px solid black;
     margin: 5px 0;
-    background-color: rgba(4, 213, 222, 0.75);
+    background-color: rgba(238, 16, 46, 0.75);
 
 }
 
 ul {
     list-style-type: none;
+}
+
+.trash {
+    background-image: url("../img/delete.svg");
+    height: 20px;
+    width: 20px;
+   background-size: cover;
+
+}
+
+
+.edit {
+    background-image: url("../img/pencil.svg");
+    height: 20px;
+    width: 20px;
+   background-size: cover;
+
 }
