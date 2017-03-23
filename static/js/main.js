@@ -34,7 +34,7 @@ function CardLoader() {
 
     for (let i = 0; i < retrievedCardObject.length; i++) {
 
-        let LoadableCardEntry = "<li class='dragentries'><p>" + retrievedCardObject[i].CardText + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId + "'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId + "'></div></li>";
+        let LoadableCardEntry = "<li class='dragentries material'><p>" + retrievedCardObject[i].CardText + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId + "'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId + "'></div></li>";
 
 
         if (retrievedCardObject[i].CardState === "new") {
