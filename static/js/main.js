@@ -56,9 +56,7 @@ function CardLoader() {
 
         else if (retrievedCardObject[i].CardState === "done") {
             $("#donecollector").append(LoadableCardEntry);
-
         }
-
     }
 }
 
@@ -87,7 +85,6 @@ function CardAdder() {
 
     var CardCollector = JSON.parse(localStorage.getItem("CardCollector"));
 
-
     $("#add-card").click(function () {
 
         var CardObject = new CardClass(CardCounter, $("#card-input").val(), "new", 1);
@@ -99,21 +96,17 @@ function CardAdder() {
         $("#newcollector").append(AddableCardEntry);
 
         localStorage.setItem('CardCollector', JSON.stringify(CardCollector));
-
-        CardCounter++
+        CardCounter++;
     });
 }
 
 function CardDragger() {
-
-
     $(".card-entry").sortable({
         connectWith: ".card-entry",
         revert: true,
         dropOnEmpty: true
     })
 }
-
 
 function BoardAdder() {
 
@@ -132,13 +125,11 @@ function BoardAdder() {
         $("#boardcollector").append(AddableBoardEntry);
 
         localStorage.setItem('BoardCollector', JSON.stringify(BoardCollector));
-
-        BoardCounter++
+        BoardCounter++;
     });
 }
 
 function BoardDragger() {
-
     $(".board-entry").sortable({
         connectWith: ".card-entry",
         revert: true,
@@ -186,19 +177,12 @@ function BoardDragger() {
 $(document).ready(function () {
 
     LocalCardStorageInit();
-
     LocalBoardStorageInit();
-
     CardDragger();
-
     BoardDragger();
-
     CardAdder();
-
     BoardAdder();
-
     CardLoader();
-
     BoardLoader();
 
 });
