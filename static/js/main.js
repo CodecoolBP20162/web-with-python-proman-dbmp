@@ -170,6 +170,25 @@ function BoardDragger() {
 
  */
 
+/*
+$('[id^="delete"]').live('click', function () {
+    obj_id = this.id.toString();
+    obj_id = obj_id.substr(6)
+    for (var i = 0; i < retrievedCardObject.length; i++) {
+        if (retrievedCardObjectj[i].id.toString() === obj_id) {
+
+            if (click) {
+
+                $('div').remove('#sonka')
+
+            }
+        }
+    }
+    this.parentulj.remove
+});
+
+ */
+
 
 $(document).ready(function () {
 
