@@ -46,11 +46,22 @@ function CardLoader() {
     }
 }
 
+function LocalInit() {
+
+    if (JSON.parse(localStorage.getItem("CardCollector")) === null) {
+
+        localStorage.setItem('CardCollector', JSON.stringify([]));
+    }
+}
+
 function CardAdder() {
 
     let CardCounter = 1;
 
-    let CardCollector = [];
+    LocalInit();
+
+    let CardCollector = JSON.parse(localStorage.getItem("CardCollector"));
+
 
     $("#add-card").click(function () {
 
