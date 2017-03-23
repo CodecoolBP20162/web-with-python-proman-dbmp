@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 body {
     background: #a7a7a7;
 }
@@ -55,27 +56,31 @@ ul {
 .material{overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
           transition:all 0.3s cubic-bezier(.25,.8,.25,1);}
 .material:hover{box-shadow:0 0 28px rgba(0,0,0,0.25),0 10px 10px rgba(0,0,0,0.22);}
-.material:after{content:"";position:absolute;width:5vw;height:5vw;top:45%;left:40%;background:rgba(255,255,255,.5);border-radius:50%;transform:scale(0);}
-.material:hover:after{background:transparent;transition:all 1s;transform:scale(10);}
-.button{border-radius:50%;position:absolute;bottom:1vw;right:1vw;width:7vw;cursor:pointer;z-index:10;}
-.card-input{visibility:hide;}
+.material:after{content:"";position:absolute;width:4vw;height:4vw;top:45%;left:48%;background:rgba(255,255,255,.5);border-radius:50%;transform:scale(0);}
+.material:hover:after{background:transparent;transition:all 0.5s;transform:scale(9);}
+.button{border-radius:50%;position:absolute;bottom:1vw;right:1vw;width:7vw;cursor:pointer;z-index:10;transition:all .5s;}
+
+/* FLOATING BUTTON */
+#card-input{position:absolute;bottom:3vw;right:5vw;background:white;resize:horizontal;border:5px solid;z-index:9;width:0vw;transition:.5s;}
+#input-toggle{display:none;}
+#input-toggle:checked+label>svg{transform:rotate(225deg);}
+#input-toggle:checked+label+#card-input{width:200px;transform:scale(1)}
 
 /* BURGER MENU */
-[type="checkbox"]{display:none;}
 @keyframes open{100%{width:50vw;height:50vw}}
 @keyframes close{0%{width:50vw;height:50vw;}}
-#menu{position:absolute;margin:0;padding:0;width:6vw;height:6vw;background-color:#fff;border-bottom-right-radius:100%;animation:close .3s both;z-index:9;}
-#options{position:absolute;left:4vw;color:#03A9F4;font:14pt "Roboto",sans-serif;font-weight:700;line-height:1.8;text-decoration:none;text-transform:none;list-style:none;outline:0;display:none;z-index:10;}
-a:focus{display:block;color:#333;background-color:#eee;transition:all .5s;}
-#trigger{position:absolute;top:1vw;left:1vw;}
+#menu{position:absolute;margin:0;padding:0;width:6vw;height:6vw;background-color:#fff;border-bottom-right-radius:100%;color:#03A9F4;overflow:hidden;animation:close .3s both;z-index:9;}
+.option{margin:4vw;display:block;font:14pt "Roboto",sans-serif;font-weight:700;line-height:1.8;text-decoration:none;}
+.option:focus{color:#333;background-color:#eee;transition:all .5s;}
 #burger,#burger:before,#burger:after{position:absolute;top:2vw;left:1vw;background:#03A9F4;width:3vw;height:.6vw;cursor:pointer;z-index:10;transition:1s ease;}
 #burger:before{content:"";top:-1vw;left:0vw}
 #burger:after{content:"";top:1vw;left:0vw}
-#menu-toggle:checked+#menu{animation:open 0.5s ease both;}
-#menu-toggle:checked+#menu+#trigger+#burger{top:2.3vw;transform:rotate(180deg)}
-#menu-toggle:checked+#menu+#trigger+#burger:before{width:2vw;top:-2vw;transform:rotate(45deg) translateX(2vw)}
-#menu-toggle:checked+#menu+#trigger+#burger:after{width:2vw;top:2vw;transform:rotate(-45deg) translateX(2vw)}
-#menu-toggle:checked+#menu+#trigger+#burger+#options{display:block;}
+#menu-toggle{display:none;}
+#menu-toggle:checked+#burger{top:2.3vw;transform:rotate(180deg)}
+#menu-toggle:checked+#burger:before{width:2vw;top:-2vw;transform:rotate(45deg) translateX(2vw)}
+#menu-toggle:checked+#burger:after{width:2vw;top:2vw;transform:rotate(-45deg) translateX(2vw)}
+#menu-toggle:checked+#burger+#menu{animation:open 0.5s ease both;}
+#menu-toggle:checked+#burger+#menu>.option{transform:scale(1);transition:0.5s ease both;}
 
 /* GOOGLE DOTS */
 @keyframes fade{0%,50%{opacity:0;transform:scale(0);}}
