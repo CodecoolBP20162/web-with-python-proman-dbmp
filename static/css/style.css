@@ -52,3 +52,11 @@ ul {
    background-size: cover;
 
 }
+
+.board-wrapper {
+    min-height: 100px;
+    background-color: #6e6e6e;
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    border-radius: 5px;
+}
+

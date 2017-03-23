@@ -3,25 +3,26 @@ function CardClass(CardId, CardText, CardState, CardBoard,) {
     this.CardText = CardText;
     this.CardState = CardState;
     this.CardBoard = CardBoard;
-};
+}
 
 function BoardClass(BoardId, BoardName,) {
     this.BoardId = BoardId;
     this.BoardName = BoardName;
-
-};
+}
 
 function CardLoader() {
 
 
-    var retrievedCardObject = JSON.parse(localStorage.getItem("CardCollector"));
+    let retrievedCardObject = JSON.parse(localStorage.getItem("CardCollector"));
 
 
-    for (var i = 0; i < (retrievedCardObject.length); i++) {
+    for (let i = 0; i < retrievedCardObject.length; i++) {
 
 
         if (retrievedCardObject[i].CardState === "new") {
+
             $("#newcollector").append("<li class='dragentries'><p>" + retrievedCardObject[i].CardText  + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId +"'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId +"'></div></li>");
+
 
         }
 
@@ -45,13 +46,13 @@ function CardLoader() {
 
 function CardAdder() {
 
-    var CardCounter = 1;
+    let CardCounter = 1;
 
-    var CardCollector = [];
+    let CardCollector = [];
 
     $("#add-card").click(function () {
 
-        var CardObject = new CardClass(CardCounter, $("#input-id").val(), "new", 1);
+        let CardObject = new CardClass(CardCounter, $("#card-input").val(), "new", 1);
 
         CardCollector.push(CardObject);
         
@@ -74,12 +75,45 @@ function CardDragger() {
 }
 
 
+function BoardAdder() {
+
+    let BoardCounter = 1;
+
+    let BoardCollector = [];
+
+    $("#add-board").click(function () {
+
+        let BoardObject = new BoardClass(BoardCounter, $("#board-input").val());
+
+        BoardCollector.push(BoardObject);
+
+        $("#boardcollector").append("<div class='dragentries col-lg-3 col-md-4 col-sm-6 col-xs-12'><div class='board-wrapper'> <p>" + BoardObject.BoardName  + "</p><div class='trash' id='delete" + BoardObject.BoardId +"'></div><div class='edit' id='edit" + BoardObject.BoardId +"'></div></div></div>");
+
+        localStorage.setItem('BoardCollector', JSON.stringify(BoardCollector));
+
+        BoardCounter++
+    });
+}
+
+function BoardDragger() {
+
+
+    $(".board-entry").sortable({
+        connectWith: ".card-entry",
+        revert: true,
+        dropOnEmpty: true
+    })
+}
+
+
 $(document).ready(function () {
 
     CardDragger()
+    BoardDragger()
+
 
     CardAdder()
-
+    BoardAdder()
     
     CardLoader()
 
