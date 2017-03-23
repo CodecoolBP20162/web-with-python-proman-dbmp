@@ -21,23 +21,23 @@ function CardLoader() {
 
         if (retrievedCardObject[i].CardState === "new") {
 
-            $("#newcollector").append("<li class='dragentries'><p>" + retrievedCardObject[i].CardText  + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId +"'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId +"'></div></li>");
+            $("#newcollector").append("<li class='dragentries'><p>" + retrievedCardObject[i].CardText + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId + "'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId + "'></div></li>");
 
 
         }
 
         else if (retrievedCardObject[i].CardState === "in-progress") {
-            $("#in-progesscollector").append("<li class='dragentries'><p>" + retrievedCardObject[i].CardText  + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId +"'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId +"'></div></li>");
+            $("#in-progesscollector").append("<li class='dragentries'><p>" + retrievedCardObject[i].CardText + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId + "'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId + "'></div></li>");
 
         }
 
         else if (retrievedCardObject[i].CardState === "review") {
-            $("#reviewcollector").append("<li class='dragentries'><p>" + retrievedCardObject[i].CardText  + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId +"'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId +"'></div></li>");
+            $("#reviewcollector").append("<li class='dragentries'><p>" + retrievedCardObject[i].CardText + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId + "'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId + "'></div></li>");
 
         }
 
         else if (retrievedCardObject[i].CardState === "done") {
-            $("#donecollector").append("<li class='dragentries'><p>" + retrievedCardObject[i].CardText  + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId +"'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId +"'></div></li>");
+            $("#donecollector").append("<li class='dragentries'><p>" + retrievedCardObject[i].CardText + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId + "'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId + "'></div></li>");
 
         }
 
@@ -55,8 +55,8 @@ function CardAdder() {
         let CardObject = new CardClass(CardCounter, $("#card-input").val(), "new", 1);
 
         CardCollector.push(CardObject);
-        
-        $("#newcollector").append("<li class='dragentries'><p>" + CardObject.CardText  + "</p><div class='trash' id='delete" + CardObject.CardId +"'></div><div class='edit' id='edit" + CardObject.CardId +"'></div></li>");
+
+        $("#newcollector").append("<li class='dragentries'><p>" + CardObject.CardText + "</p><div class='trash' id='delete" + CardObject.CardId + "'></div><div class='edit' id='edit" + CardObject.CardId + "'></div></li>");
 
         localStorage.setItem('CardCollector', JSON.stringify(CardCollector));
 
@@ -87,7 +87,7 @@ function BoardAdder() {
 
         BoardCollector.push(BoardObject);
 
-        $("#boardcollector").append("<div class='dragentries col-lg-3 col-md-4 col-sm-6 col-xs-12'><div class='board-wrapper'> <p>" + BoardObject.BoardName  + "</p><div class='trash' id='delete" + BoardObject.BoardId +"'></div><div class='edit' id='edit" + BoardObject.BoardId +"'></div></div></div>");
+        $("#boardcollector").append("<div class='dragentries col-lg-3 col-md-4 col-sm-6 col-xs-12'><div class='board-wrapper'> <p>" + BoardObject.BoardName + "</p><div class='trash' id='delete" + BoardObject.BoardId + "'></div><div class='edit' id='edit" + BoardObject.BoardId + "'></div></div></div>");
 
         localStorage.setItem('BoardCollector', JSON.stringify(BoardCollector));
 
@@ -96,7 +96,6 @@ function BoardAdder() {
 }
 
 function BoardDragger() {
-
 
     $(".board-entry").sortable({
         connectWith: ".card-entry",
@@ -108,16 +107,14 @@ function BoardDragger() {
 
 $(document).ready(function () {
 
-    CardDragger()
-    BoardDragger()
+    CardDragger();
 
+    BoardDragger();
 
-    CardAdder()
-    BoardAdder()
-    
-    CardLoader()
+    CardAdder();
 
+    BoardAdder();
 
-
+    CardLoader();
 
 });
