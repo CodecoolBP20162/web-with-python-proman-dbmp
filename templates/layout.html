@@ -24,13 +24,15 @@
 
 <body>
 <header>
-    <div class="container">
-        <div class="row board-entry">
-
-
-        </div>
-    </div>
-
+<input type="checkbox" id="menu-toggle"/>
+<label for="menu-toggle" id="menu" class="material"></label>
+<label for="menu-toggle" id="trigger"></label>
+<label for="menu-toggle" id="burger"></label>
+<ul id="options">
+    <li><a href="#">Project Manager</a></li>
+    <li><a href="#">Save offline</a></li>
+    <li><a href="#">Save online</a></li>
+</ul>
 </header>
 
 {% block content %} {% endblock %}
