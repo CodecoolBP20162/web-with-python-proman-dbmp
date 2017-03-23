@@ -28,7 +28,7 @@ ul li {
     border: 1px solid black;
     margin: 5px 0;
     background-color: rgba(238, 16, 46, 0.75);
-
+    border-radius: 5px;
 }
 
 ul {
