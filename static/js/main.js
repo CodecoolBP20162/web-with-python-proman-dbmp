@@ -29,12 +29,12 @@ function LocalBoardStorageInit() {
 function CardLoader() {
 
 
-    let retrievedCardObject = JSON.parse(localStorage.getItem("CardCollector"));
+    var retrievedCardObject = JSON.parse(localStorage.getItem("CardCollector"));
 
 
-    for (let i = 0; i < retrievedCardObject.length; i++) {
+    for (var i = 0; i < retrievedCardObject.length; i++) {
 
-        let LoadableCardEntry = "<li class='dragentries'><p>" + retrievedCardObject[i].CardText + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId + "'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId + "'></div></li>";
+        var LoadableCardEntry = "<li class='dragentries'><p>" + retrievedCardObject[i].CardText + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId + "'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId + "'></div></li>";
 
 
         if (retrievedCardObject[i].CardState === "new") {
@@ -65,12 +65,12 @@ function CardLoader() {
 function BoardLoader() {
 
 
-    let retrievedBoardObject = JSON.parse(localStorage.getItem("BoardCollector"));
+    var retrievedBoardObject = JSON.parse(localStorage.getItem("BoardCollector"));
 
 
-    for (let i = 0; i < retrievedBoardObject.length; i++) {
+    for (var i = 0; i < retrievedBoardObject.length; i++) {
 
-        let LoadableBoardEntry = "<div class='dragentries col-lg-3 col-md-4 col-sm-6 col-xs-12'><div class='board-wrapper'> <p>" + retrievedBoardObject[i].BoardName + "</p><div class='trash' id='delete" + retrievedBoardObject[i].BoardId + "'></div><div class='edit' id='edit" + retrievedBoardObject[i].BoardId + "'></div></div></div>";
+        var LoadableBoardEntry = "<div class='dragentries col-lg-3 col-md-4 col-sm-6 col-xs-12'><div class='board-wrapper'> <p>" + retrievedBoardObject[i].BoardName + "</p><div class='trash' id='delete" + retrievedBoardObject[i].BoardId + "'></div><div class='edit' id='edit" + retrievedBoardObject[i].BoardId + "'></div></div></div>";
 
 
         $("#boardcollector").append(LoadableBoardEntry);
@@ -82,19 +82,19 @@ function BoardLoader() {
 
 function CardAdder() {
 
-    let CardCounter = 1;
+    var CardCounter = 1;
 
 
-    let CardCollector = JSON.parse(localStorage.getItem("CardCollector"));
+    var CardCollector = JSON.parse(localStorage.getItem("CardCollector"));
 
 
     $("#add-card").click(function () {
 
-        let CardObject = new CardClass(CardCounter, $("#card-input").val(), "new", 1);
+        var CardObject = new CardClass(CardCounter, $("#card-input").val(), "new", 1);
 
         CardCollector.push(CardObject);
 
-        let AddableCardEntry = "<li class='dragentries'><p>" + CardObject.CardText + "</p><div class='trash' id='delete" + CardObject.CardId + "'></div><div class='edit' id='edit" + CardObject.CardId + "'></div></li>"
+        var AddableCardEntry = "<li class='dragentries'><p>" + CardObject.CardText + "</p><div class='trash' id='delete" + CardObject.CardId + "'></div><div class='edit' id='edit" + CardObject.CardId + "'></div></li>"
 
         $("#newcollector").append(AddableCardEntry);
 
@@ -117,17 +117,17 @@ function CardDragger() {
 
 function BoardAdder() {
 
-    let BoardCounter = 1;
+    var BoardCounter = 1;
 
-    let BoardCollector = JSON.parse(localStorage.getItem("BoardCollector"));
+    var BoardCollector = JSON.parse(localStorage.getItem("BoardCollector"));
 
     $("#add-board").click(function () {
 
-        let BoardObject = new BoardClass(BoardCounter, $("#board-input").val());
+        var BoardObject = new BoardClass(BoardCounter, $("#board-input").val());
 
         BoardCollector.push(BoardObject);
 
-        let AddableBoardEntry = "<div class='dragentries col-lg-3 col-md-4 col-sm-6 col-xs-12'><div class='board-wrapper'> <p>" + BoardObject.BoardName + "</p><div class='trash' id='delete" + BoardObject.BoardId + "'></div><div class='edit' id='edit" + BoardObject.BoardId + "'></div></div></div>";
+        var AddableBoardEntry = "<div class='dragentries col-lg-3 col-md-4 col-sm-6 col-xs-12'><div class='board-wrapper'> <p>" + BoardObject.BoardName + "</p><div class='trash' id='delete" + BoardObject.BoardId + "'></div><div class='edit' id='edit" + BoardObject.BoardId + "'></div></div></div>";
 
         $("#boardcollector").append(AddableBoardEntry);
 
@@ -168,18 +168,18 @@ function BoardDragger() {
  */
 
 /*
-$('[id^="delete"]').live('click', function () {
-    obj_id = this.id.toString();
-    obj_id = obj_id.substr(6)
-    for (var i = 0; i < retrievedCardObject.length; i++) {
-        if (retrievedCardObjectj[i].id.toString() === obj_id) {
-            if (click) {
-                $('div').remove('#sonka')
-            }
-        }
-    }
-    this.parentulj.remove
-});
+ $('[id^="delete"]').live('click', function () {
+ obj_id = this.id.toString();
+ obj_id = obj_id.substr(6)
+ for (var i = 0; i < retrievedCardObject.length; i++) {
+ if (retrievedCardObjectj[i].id.toString() === obj_id) {
+ if (click) {
+ $('div').remove('#sonka')
+ }
+ }
+ }
+ this.parentulj.remove
+ });
  */
 
 
