@@ -10,21 +10,35 @@ function BoardClass(BoardId, BoardName) {
     this.BoardName = BoardName;
 }
 
-function LocalCardStorageInit() {
+function Initer() {
+
 
     if (JSON.parse(localStorage.getItem("CardCollector")) === null) {
 
         localStorage.setItem('CardCollector', JSON.stringify([]));
     }
-}
 
-function LocalBoardStorageInit() {
 
     if (JSON.parse(localStorage.getItem("BoardCollector")) === null) {
 
         localStorage.setItem('BoardCollector', JSON.stringify([]));
     }
+
+
+    if (JSON.parse(localStorage.getItem("CardCounter")) === null) {
+
+        localStorage.setItem('CardCounter', 1);
+    }
+
+
+    if (JSON.parse(localStorage.getItem("BoardCounter")) === null) {
+
+        localStorage.setItem('BoardCounter', 1);
+    }
+
+
 }
+
 
 function CardLoader() {
 
@@ -34,7 +48,7 @@ function CardLoader() {
 
     for (let i = 0; i < retrievedCardObject.length; i++) {
 
-        let LoadableCardEntry = "<li class='dragentries'><p>" + retrievedCardObject[i].CardText + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId + "'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId + "'></div></li>";
+        let LoadableCardEntry = "<li class='dragentries' id='card" + retrievedCardObject[i].CardId + "\'><p>" + retrievedCardObject[i].CardText + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId + "\'></div></li>";
 
 
         if (retrievedCardObject[i].CardState === "new") {
@@ -68,7 +82,7 @@ function BoardLoader() {
 
     for (let i = 0; i < retrievedBoardObject.length; i++) {
 
-        let LoadableBoardEntry = "<div class='dragentries col-lg-3 col-md-4 col-sm-6 col-xs-12'><div class='board-wrapper'> <p>" + retrievedBoardObject[i].BoardName + "</p><div class='trash' id='delete" + retrievedBoardObject[i].BoardId + "'></div><div class='edit' id='edit" + retrievedBoardObject[i].BoardId + "'></div></div></div>";
+        let LoadableBoardEntry = "<div class='dragentries col-lg-3 col-md-4 col-sm-6 col-xs-12'><div class='board-wrapper'> <p>" + retrievedBoardObject[i].BoardName + "</p><div class='trash' id='delete" + retrievedBoardObject[i].BoardId + "'></div></div></div>";
 
 
         $("#boardcollector").append(LoadableBoardEntry);
@@ -80,61 +94,63 @@ function BoardLoader() {
 
 function CardAdder() {
 
-    let CardCounter = 1;
-
-
-    let CardCollector = JSON.parse(localStorage.getItem("CardCollector"));
-
     $("#add-card").click(function () {
+
+        CardCounter = localStorage.getItem("CardCounter");
+
+        CardCollector = JSON.parse(localStorage.getItem("CardCollector"));
 
         let CardObject = new CardClass(CardCounter, $("#card-input").val(), "new", 1);
 
         CardCollector.push(CardObject);
 
-        let AddableCardEntry = "<li class='dragentries'><p>" + CardObject.CardText + "</p><div class='trash' id='delete" + CardObject.CardId + "'></div><div class='edit' id='edit" + CardObject.CardId + "'></div></li>"
+        let AddableCardEntry = "<li class='dragentries' id='card" + CardObject.CardId + "\'><p>" + CardObject.CardText + "</p><div class='trash' id='delete" + CardObject.CardId + "\'></div></li>";
 
         $("#newcollector").append(AddableCardEntry);
 
         localStorage.setItem('CardCollector', JSON.stringify(CardCollector));
-        CardCounter++;
-    });
-}
 
-function CardDragger() {
-    $(".card-entry").sortable({
-        connectWith: ".card-entry",
-        revert: true,
-        dropOnEmpty: true
-    })
+        localStorage.setItem('CardCounter', ++CardCounter);
+
+    });
 }
 
 function BoardAdder() {
 
-    let BoardCounter = 1;
-
-    let BoardCollector = JSON.parse(localStorage.getItem("BoardCollector"));
-
     $("#add-board").click(function () {
+
+        BoardCounter = localStorage.getItem("BoardCounter");
+
+        BoardCollector = JSON.parse(localStorage.getItem("BoardCollector"));
 
         let BoardObject = new BoardClass(BoardCounter, $("#board-input").val());
 
         BoardCollector.push(BoardObject);
 
-        let AddableBoardEntry = "<div class='dragentries col-lg-3 col-md-4 col-sm-6 col-xs-12'><div class='board-wrapper'> <p>" + BoardObject.BoardName + "</p><div class='trash' id='delete" + BoardObject.BoardId + "'></div><div class='edit' id='edit" + BoardObject.BoardId + "'></div></div></div>";
+        let AddableBoardEntry = "<div class='dragentries col-lg-3 col-md-4 col-sm-6 col-xs-12'><div class='board-wrapper'> <p>" + BoardObject.BoardName + "</p><div class='trash' id='delete" + BoardObject.BoardId + "'></div></div></div>";
 
         $("#boardcollector").append(AddableBoardEntry);
 
         localStorage.setItem('BoardCollector', JSON.stringify(BoardCollector));
-        BoardCounter++;
+
+        localStorage.setItem('BoardCounter', ++BoardCounter);
     });
 }
 
-function BoardDragger() {
-    $(".board-entry").sortable({
-        connectWith: ".card-entry",
-        revert: true,
-        dropOnEmpty: true
-    })
+function Dragger() {
+
+
+    let oldList, newList, item;
+    $('.sortable').sortable({
+        start: function (event, ui) {
+            item = ui.item;
+            newList = oldList = ui.item.parent().parent();
+        },
+        change: function (event, ui) {
+            if (ui.sender) newList = ui.placeholder.parent().parent();
+        },
+        connectWith: ".sortable"
+    }).disableSelection();
 }
 
 
@@ -162,24 +178,38 @@ function BoardDragger() {
  $('[id^="delete"]').live('click', function () {
  obj_id = this.id.toString();
  obj_id = obj_id.substr(6)
+<<<<<<< HEAD
  for (let i = 0; i < retrievedCardObject.length; i++) {
  if (retrievedCardObjectj[i].id.toString() === obj_id) {
  if (click) {
  $('div').remove('#sonka')
+=======
+ for (var i = 0; i < retrievedCardObject.length; i++) {
+ if (retrievedCardObjectj[i].id.toString() === obj_id) {
+
+ if (click) {
+
+ $('div').remove('#sonka')
+
+>>>>>>> dev
  }
  }
  }
  this.parentulj.remove
  });
+<<<<<<< HEAD
+=======
+
+>>>>>>> dev
  */
 
 
 $(document).ready(function () {
 
-    LocalCardStorageInit();
-    LocalBoardStorageInit();
-    CardDragger();
-    BoardDragger();
+    Initer();
+
+    Dragger();
+
     CardAdder();
     BoardAdder();
     CardLoader();
