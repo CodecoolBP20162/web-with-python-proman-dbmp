@@ -1,0 +1,24 @@
+{% extends "layout.html" %} {% block title %}Home Menu{% endblock %} {% block content %}
+
+
+<section>
+
+    <div>
+        <p>Add board</p>
+
+        <input type="text" name="card-name" required id="board-input">
+        <button id="add-board">Add</button>
+
+    </div>
+
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row board-entry sortable" id="boardcollector">
+
+
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
