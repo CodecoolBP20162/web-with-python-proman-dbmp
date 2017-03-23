@@ -48,7 +48,9 @@ function CardLoader() {
 
     for (let i = 0; i < retrievedCardObject.length; i++) {
 
+
         let LoadableCardEntry = "<li class='dragentries' id='card" + retrievedCardObject[i].CardId + "\'><p>" + retrievedCardObject[i].CardText + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId + "\'></div></li>";
+
 
 
         if (retrievedCardObject[i].CardState === "new") {
@@ -56,19 +58,13 @@ function CardLoader() {
             $("#newcollector").append(LoadableCardEntry);
 
 
-        }
-
-        else if (retrievedCardObject[i].CardState === "in-progress") {
+        } else if (retrievedCardObject[i].CardState === "in-progress") {
             $("#in-progesscollector").append(LoadableCardEntry);
 
-        }
-
-        else if (retrievedCardObject[i].CardState === "review") {
+        } else if (retrievedCardObject[i].CardState === "review") {
             $("#reviewcollector").append(LoadableCardEntry);
 
-        }
-
-        else if (retrievedCardObject[i].CardState === "done") {
+        } else if (retrievedCardObject[i].CardState === "done") {
             $("#donecollector").append(LoadableCardEntry);
 
         }
