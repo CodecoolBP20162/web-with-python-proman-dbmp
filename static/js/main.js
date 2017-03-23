@@ -1,11 +1,11 @@
-function CardClass(CardId, CardText, CardState, CardBoard,) {
+function CardClass(CardId, CardText, CardState, CardBoard) {
     this.CardId = CardId;
     this.CardText = CardText;
     this.CardState = CardState;
     this.CardBoard = CardBoard;
 }
 
-function BoardClass(BoardId, BoardName,) {
+function BoardClass(BoardId, BoardName) {
     this.BoardId = BoardId;
     this.BoardName = BoardName;
 }
@@ -15,13 +15,12 @@ function CardLoader() {
 
     let retrievedCardObject = JSON.parse(localStorage.getItem("CardCollector"));
 
-    et
-    AppendableEntry = "<li class='dragentries'><p>" + retrievedCardObject[i].CardText + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId + "'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId + "'></div></li>";
-
 
     for (let i = 0; i < retrievedCardObject.length; i++) {
 
-        l
+          let AppendableEntry = "<li class='dragentries'><p>" + retrievedCardObject[i].CardText + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId + "'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId + "'></div></li>";
+
+
         if (retrievedCardObject[i].CardState === "new") {
 
             $("#newcollector").append(AppendableEntry);
@@ -35,7 +34,7 @@ function CardLoader() {
         }
 
         else if (retrievedCardObject[i].CardState === "review") {
-            $("#reviewcollector").append("<li class='dragentries'><p>" + retrievedCardObject[i].CardText + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId + "'></div><div class='edit' id='edit" + retrievedCardObject[i].CardId + "'></div></li>");
+            $("#reviewcollector").append(AppendableEntry);
 
         }
 
