@@ -66,9 +66,7 @@ function CardLoader() {
 
         } else if (retrievedCardObject[i].CardState === "done") {
             $("#donecollector").append(LoadableCardEntry);
-
         }
-
     }
 }
 
@@ -113,7 +111,6 @@ function CardAdder() {
     });
 }
 
-
 function BoardAdder() {
 
     $("#add-board").click(function () {
@@ -150,9 +147,7 @@ function Dragger() {
         },
         connectWith: ".sortable"
     }).disableSelection();
-
 }
-
 
 $(document).ready(function () {
 
@@ -161,11 +156,8 @@ $(document).ready(function () {
     Dragger();
 
     CardAdder();
-
     BoardAdder();
-
     CardLoader();
-
     BoardLoader();
 
 });
