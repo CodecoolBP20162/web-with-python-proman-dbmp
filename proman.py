@@ -1,6 +1,12 @@
 from flask import Flask, request, g, redirect, url_for, render_template, session
+from models import *
 
 app = Flask(__name__)
+
+
+@app.before_request
+def before_request():
+    if_exists()
 
 
 @app.route('/')
