@@ -18,19 +18,23 @@
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="/static/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-
-
 </head>
 
 <body>
 <header>
-    <div class="container">
-        <div class="row board-entry">
+<input id="menu-toggle" type="checkbox"/>
+<label id="burger" for="menu-toggle"></label>
+<label id="menu" class="material" for="menu-toggle">
+    <a href="#" class="option">Project Manager</a>
+    <a href="#" class="option">Save offline</a>
+    <a href="#" class="option">Save online</a></label>
 
-
-        </div>
-    </div>
-
+<div class="logo">
+<input type="radio" class="radio" id="radio-1" name="group"/><label class="dot" for="radio-1"><div class="teamfont"><p>D</p></div></label>
+<input type="radio" class="radio" id="radio-2" name="group"/><label class="dot" for="radio-2"><div class="teamfont"><p>B</p></div></label>
+<input type="radio" class="radio" id="radio-3" name="group"/><label class="dot" for="radio-3"><div class="teamfont"><p>M</p></div></label>
+<input type="radio" class="radio" id="radio-4" name="group"/><label class="dot" for="radio-4"><div class="teamfont"><p>P</p></div></label>
+</div>
 </header>
 
 {% block content %} {% endblock %}

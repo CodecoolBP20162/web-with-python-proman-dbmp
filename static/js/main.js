@@ -48,7 +48,9 @@ function CardLoader() {
 
     for (let i = 0; i < retrievedCardObject.length; i++) {
 
-        let LoadableCardEntry = "<li class='dragentries' id='card" + retrievedCardObject[i].CardId + "\'><p>" + retrievedCardObject[i].CardText + "</p><div class='trash' id='delete" + retrievedCardObject[i].CardId + "\'></div></li>";
+
+        let LoadableCardEntry = "<li class='dragentries' id='card" + retrievedCardObject[i].CardId + "\'><p>" + retrievedCardObject[i].CardText + "</p><div class='' id='delete" + retrievedCardObject[i].CardId + "\'></div></li>";
+
 
 
         if (retrievedCardObject[i].CardState === "new") {
@@ -56,19 +58,13 @@ function CardLoader() {
             $("#newcollector").append(LoadableCardEntry);
 
 
-        }
-
-        else if (retrievedCardObject[i].CardState === "in-progress") {
+        } else if (retrievedCardObject[i].CardState === "in-progress") {
             $("#in-progesscollector").append(LoadableCardEntry);
 
-        }
-
-        else if (retrievedCardObject[i].CardState === "review") {
+        } else if (retrievedCardObject[i].CardState === "review") {
             $("#reviewcollector").append(LoadableCardEntry);
 
-        }
-
-        else if (retrievedCardObject[i].CardState === "done") {
+        } else if (retrievedCardObject[i].CardState === "done") {
             $("#donecollector").append(LoadableCardEntry);
         }
     }
@@ -82,7 +78,7 @@ function BoardLoader() {
 
     for (let i = 0; i < retrievedBoardObject.length; i++) {
 
-        let LoadableBoardEntry = "<div class='dragentries col-lg-3 col-md-4 col-sm-6 col-xs-12'><div class='board-wrapper'> <p>" + retrievedBoardObject[i].BoardName + "</p><div class='trash' id='delete" + retrievedBoardObject[i].BoardId + "'></div></div></div>";
+        let LoadableBoardEntry = "<div class='dragentries col-lg-3 col-md-4 col-sm-6 col-xs-12'><div class='board-wrapper'> <p>" + retrievedBoardObject[i].BoardName + "</p><div class='' id='delete" + retrievedBoardObject[i].BoardId + "'></div></div></div>";
 
 
         $("#boardcollector").append(LoadableBoardEntry);
@@ -104,7 +100,7 @@ function CardAdder() {
 
         CardCollector.push(CardObject);
 
-        let AddableCardEntry = "<li class='dragentries' id='card" + CardObject.CardId + "\'><p>" + CardObject.CardText + "</p><div class='trash' id='delete" + CardObject.CardId + "\'></div></li>";
+        let AddableCardEntry = "<li class='dragentries' id='card" + CardObject.CardId + "\'><p>" + CardObject.CardText + "</p><div class='' id='delete" + CardObject.CardId + "\'></div></li>";
 
         $("#newcollector").append(AddableCardEntry);
 
@@ -127,7 +123,7 @@ function BoardAdder() {
 
         BoardCollector.push(BoardObject);
 
-        let AddableBoardEntry = "<div class='dragentries col-lg-3 col-md-4 col-sm-6 col-xs-12'><div class='board-wrapper'> <p>" + BoardObject.BoardName + "</p><div class='trash' id='delete" + BoardObject.BoardId + "'></div></div></div>";
+        let AddableBoardEntry = "<div class='dragentries col-lg-3 col-md-4 col-sm-6 col-xs-12'><div class='board-wrapper'> <p>" + BoardObject.BoardName + "</p><div class='' id='delete" + BoardObject.BoardId + "'></div></div></div>";
 
         $("#boardcollector").append(AddableBoardEntry);
 
@@ -152,57 +148,6 @@ function Dragger() {
         connectWith: ".sortable"
     }).disableSelection();
 }
-
-
-/*
- function CardEdit {
- let text = $(this).html();
- let length = text.length;
- let editableText = $("<textarea />");
- editableText.val(text);
- $(this).replaceWith(editableText);
- editableText.focus();
- editableText.blur(editableTextBlurred);
- }
- function editableTextBlurred() {
- let html = $(this).val();
- let viewableText = $("<div>");
- viewableText.html(html);
- $(this).replaceWith(viewableText);
- $(viewableText).click(divClicked);
- }
- $('#x').live('click', divClicked);
- */
-
-/*
- $('[id^="delete"]').live('click', function () {
- obj_id = this.id.toString();
- obj_id = obj_id.substr(6)
-<<<<<<< HEAD
- for (let i = 0; i < retrievedCardObject.length; i++) {
- if (retrievedCardObjectj[i].id.toString() === obj_id) {
- if (click) {
- $('div').remove('#sonka')
-=======
- for (var i = 0; i < retrievedCardObject.length; i++) {
- if (retrievedCardObjectj[i].id.toString() === obj_id) {
-
- if (click) {
-
- $('div').remove('#sonka')
-
->>>>>>> dev
- }
- }
- }
- this.parentulj.remove
- });
-<<<<<<< HEAD
-=======
-
->>>>>>> dev
- */
-
 
 $(document).ready(function () {
 
