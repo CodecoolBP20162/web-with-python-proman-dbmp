@@ -10,10 +10,6 @@ function BoardClass(BoardId, BoardName) {
     this.BoardName = BoardName;
 }
 
-//let createInput = document.createElement("input");
-//input.type = "text";
-//input.className = "css-class-name";
-//container.appendChild(input);
 
 
 
@@ -121,6 +117,19 @@ function CardAdder() {
 }
 
 
+function NewCardAdder() {
+
+    $("#new-card-item").click(function () {
+
+        let newCardItem = document.body.getElementsByTagName("ul")[0].appendChild(document.createElement("li"));
+
+        let test123 = "asd";
+
+        newCardItem.childNodes[0].innerHTML = test123
+    });
+}
+
+
 function BoardAdder() {
 
     $("#add-board").click(function () {
@@ -175,4 +184,7 @@ $(document).ready(function () {
 
     BoardLoader();
 
+    NewCardAdder();
+
 });
+

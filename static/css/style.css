@@ -3,6 +3,8 @@ body {
     background: #a7a7a7;
 }
 
+
+
 header {
     height: 15vh;
 }
@@ -157,9 +159,9 @@ ul {
     font-family: Roboto;
     border: none;
     outline: none;
-    border-radius: 15%;
     padding: 3%;
-    height: 80%;
+    height: 100%;
+    border-radius: 10%;
     z-index: 10;
     width: 80%;
     transition: .5s;
