@@ -9,7 +9,7 @@
                 <rect x="25%" y="42.5%" width="50%" height="15%" fill="#4285f4"/>
             </svg>
         </label>
-        <input id="card-input" class="material" type="text" name="card-name" required>
+        <input id="board-input" class="material" type="text" name="card-name" required>
         <button id="add-card" type="submit">Add</button>
     </form>
     <div class="container">
@@ -17,11 +17,12 @@
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" id="new">
                     <div class="card-wrapper material">
-                        <h1>New</h1>
+                        <h1><input placeholder="Board name" id="card-input"></h1>
                         <div class="sortfield">
 
                             <ul class="card-entry list-unstyled sortable" id="newcollector">
 
+                                <li><input placeholder="card item" id="card-item"></li>
 
                             </ul>
                         </div>

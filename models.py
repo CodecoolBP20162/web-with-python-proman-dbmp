@@ -8,7 +8,7 @@ class Entry(Model):
 
     id = PrimaryKeyField()
     date = DateTimeField (default = datetime.datetime.now)
-    progress = TextField (default = "New")
+    state = TextField (default = "New")
     text = TextField()
 
     class Meta:
