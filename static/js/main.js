@@ -10,10 +10,10 @@ function BoardClass(BoardId, BoardName) {
     this.BoardName = BoardName;
 }
 
-let createInput = document.createElement("input");
-input.type = "text";
-input.className = "css-class-name";
-container.appendChild(input);
+//let createInput = document.createElement("input");
+//input.type = "text";
+//input.className = "css-class-name";
+//container.appendChild(input);
 
 
 
