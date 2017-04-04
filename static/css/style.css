@@ -120,7 +120,7 @@ ul {
 }
 
 /* FLOATING BUTTON */
-#card-input {
+#board-input {
     position: fixed;
     bottom: 2vw;
     right: 3vw;
@@ -137,7 +137,7 @@ ul {
     transition: .5s;
 }
 
-#add-card {
+#add-board {
     display: none;
 }
 
@@ -156,7 +156,7 @@ ul {
     transform: rotate(225deg);
 }
 
-#input-toggle:checked + label + #card-input {
+#input-toggle:checked + label + #board-input {
     width: 200px;
     transform: scale(1)
 }
