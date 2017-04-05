@@ -149,15 +149,30 @@ function Dragger() {
     }).disableSelection();
 }
 
+function GetJson (url) {
+    var card;
+
+    $.ajax({
+        url: url,
+        method: 'GET',
+        async: false,
+        success: function (data) {
+            card = data;
+        }
+    });
+
+    return card;
+}
+
 $(document).ready(function () {
-
     Initer();
-
     Dragger();
-
     CardAdder();
     BoardAdder();
     CardLoader();
     BoardLoader();
-
+    var card = GetJson('/card/json');
+    alert(card);
+    var board = GetJson('/board/json');
+    alert(board);
 });
