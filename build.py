@@ -21,3 +21,7 @@ if __name__ == "__main__":
     proman.connect_to_db()
     proman.drop_table()
     proman.create_tables()
+
+    # Card().create(card_json="{'CardId': 1, 'CardText': 'New card', 'CardState': 'in-progress',"
+    #                             "'CardBoard': 'New board'}")
+    # Board().create(board_json="{'BoardId': 1, 'BoardName': 'New board'}")

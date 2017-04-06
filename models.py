@@ -32,9 +32,12 @@ class BaseModel(Model):
 
 
 class Board(BaseModel):
-    board_name = CharField()
+    board_json = CharField()
 
 
 class Card(BaseModel):
-    card_name = CharField()
-    board_name = ForeignKeyField(Board, related_name="cards")
+    # card_json = CharField()
+    CardId = CharField()
+    CardText = CharField()
+    CardState = CharField()
+    CardBoard = IntegerField()
