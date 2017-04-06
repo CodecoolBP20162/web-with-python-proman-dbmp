@@ -5,26 +5,6 @@ function CardClass(CardId, CardText, CardState, CardBoard) {
     this.CardBoard = CardBoard;
 }
 
-// function Initer(json) {
-//     if (JSON.parse(localStorage.getItem("CardCollector")) === null) {
-//         localStorage.setItem('CardCollector', JSON.stringify([]));
-//     }
-//     if (JSON.parse(localStorage.getItem("BoardCollector")) === null) {
-//         localStorage.setItem('BoardCollector', JSON.stringify([]));
-//     }
-//     if (JSON.parse(localStorage.getItem("CardCounter")) === null) {
-//         localStorage.setItem('CardCounter', 1);
-//     }
-//     if (JSON.parse(localStorage.getItem("BoardCounter")) === null) {
-//         localStorage.setItem('BoardCounter', 1);
-//     }
-// }
-
-// function BoardClass(BoardId, BoardName) {
-//     this.BoardId = BoardId;
-//     this.BoardName = BoardName;
-// }
-
 function CardAdderDatabase(json) {
     var cardObjectString;
     $("#add-card").click(function () {
@@ -56,7 +36,7 @@ function CardLoaderDatabase(json) {
         if (retrievedCardObject[i].CardState === "new") {
             $("#newcollector").append(LoadableCardEntry);
         } else if (retrievedCardObject[i].CardState === "in-progress") {
-            $("#in-progesscollector").append(LoadableCardEntry);
+            $("#in-progresscollector").append(LoadableCardEntry);
         } else if (retrievedCardObject[i].CardState === "review") {
             $("#reviewcollector").append(LoadableCardEntry);
         } else if (retrievedCardObject[i].CardState === "done") {
