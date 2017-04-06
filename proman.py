@@ -1,7 +1,8 @@
 from flask import Flask, request, g, redirect, url_for, render_template, session, jsonify
 from build import *
 from models import *
-import json
+# importing ast for converting string to dictionary
+import ast
 
 app = Flask(__name__)
 
@@ -18,11 +19,12 @@ def board_menu():
 
 @app.route('/card/postjson', methods=["POST"])
 def post_card_json():
-    post_json = str(request.get_data(), encoding="utf-8")
-    print(post_json)
-    return "success post"
-    # new_card = Card()
-    # new_card.create(CardId="1", CardText="Hello", CardState="in-progress", CardBoard=1)
+    raw_data = request.get_data()
+    post_json = str(raw_data, encoding="utf-8")
+    json_dict = ast.literal_eval(post_json)
+    new_card = Card()
+    new_card.create(CardId=json_dict["CardId"], CardText=json_dict["CardText"], CardState=json_dict["CardState"], CardBoard=json_dict["CardBoard"])
+    return jsonify(json_dict)
 
 
 @app.route('/card/getjson', methods=["GET"])
@@ -36,7 +38,6 @@ def get_card_json():
         card_dict["CardState"] = card.CardState
         card_dict["CardBoard"] = card.CardBoard
         card_list.append(card_dict)
-    print(card_list)
     return jsonify(card_list)
 
 
