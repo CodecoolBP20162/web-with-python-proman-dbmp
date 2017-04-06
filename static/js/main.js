@@ -59,7 +59,7 @@ function CardLoader() {
 
 
         } else if (retrievedCardObject[i].CardState === "in-progress") {
-            $("#in-progesscollector").append(LoadableCardEntry);
+            $("#in-progresscollector").append(LoadableCardEntry);
 
         } else if (retrievedCardObject[i].CardState === "review") {
             $("#reviewcollector").append(LoadableCardEntry);
