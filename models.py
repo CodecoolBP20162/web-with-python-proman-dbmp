@@ -36,4 +36,8 @@ class Board(BaseModel):
 
 
 class Card(BaseModel):
-    card_json = CharField()
+    # card_json = CharField()
+    CardId = CharField()
+    CardText = CharField()
+    CardState = CharField()
+    CardBoard = IntegerField()

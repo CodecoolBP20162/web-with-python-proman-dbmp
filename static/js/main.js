@@ -11,59 +11,55 @@ function BoardClass(BoardId, BoardName) {
 }
 
 function Initer() {
-
-
     if (JSON.parse(localStorage.getItem("CardCollector")) === null) {
-
         localStorage.setItem('CardCollector', JSON.stringify([]));
     }
-
-
     if (JSON.parse(localStorage.getItem("BoardCollector")) === null) {
-
         localStorage.setItem('BoardCollector', JSON.stringify([]));
     }
-
-
     if (JSON.parse(localStorage.getItem("CardCounter")) === null) {
-
         localStorage.setItem('CardCounter', 1);
     }
-
-
     if (JSON.parse(localStorage.getItem("BoardCounter")) === null) {
-
         localStorage.setItem('BoardCounter', 1);
     }
-
-
 }
 
-
 function CardLoader() {
+    console.log(JSON.parse(localStorage.getItem("CardCollector")));
+    var retrievedCardObject = JSON.parse(localStorage.getItem("CardCollector"));
 
-
-    let retrievedCardObject = JSON.parse(localStorage.getItem("CardCollector"));
-
-
-    for (let i = 0; i < retrievedCardObject.length; i++) {
-
-
-        let LoadableCardEntry = "<li class='dragentries' id='card" + retrievedCardObject[i].CardId + "\'><p>" + retrievedCardObject[i].CardText + "</p><div class='' id='delete" + retrievedCardObject[i].CardId + "\'></div></li>";
-
-
+    for (var i = 0; i < retrievedCardObject.length; i++) {
+        var LoadableCardEntry = "<li class='dragentries' id='card" + retrievedCardObject[i].CardId + "\'><p>" +
+            retrievedCardObject[i].CardText + "</p><div class='' id='delete" + retrievedCardObject[i].CardId +
+            "\'></div></li>";
 
         if (retrievedCardObject[i].CardState === "new") {
-
             $("#newcollector").append(LoadableCardEntry);
-
-
         } else if (retrievedCardObject[i].CardState === "in-progress") {
             $("#in-progesscollector").append(LoadableCardEntry);
-
         } else if (retrievedCardObject[i].CardState === "review") {
             $("#reviewcollector").append(LoadableCardEntry);
+        } else if (retrievedCardObject[i].CardState === "done") {
+            $("#donecollector").append(LoadableCardEntry);
+        }
+    }
+}
 
+function CardLoaderDatabase(json) {
+    var retrievedCardObject = json;
+
+    for (var i = 0; i < retrievedCardObject.length; i++) {
+        var LoadableCardEntry = "<li class='dragentries' id='card" + retrievedCardObject[i].CardId + "\'><p>" +
+            retrievedCardObject[i].CardText + "</p><div class='' id='delete" + retrievedCardObject[i].CardId +
+            "\'></div></li>";
+
+        if (retrievedCardObject[i].CardState === "new") {
+            $("#newcollector").append(LoadableCardEntry);
+        } else if (retrievedCardObject[i].CardState === "in-progress") {
+            $("#in-progesscollector").append(LoadableCardEntry);
+        } else if (retrievedCardObject[i].CardState === "review") {
+            $("#reviewcollector").append(LoadableCardEntry);
         } else if (retrievedCardObject[i].CardState === "done") {
             $("#donecollector").append(LoadableCardEntry);
         }
@@ -108,6 +104,11 @@ function CardAdder() {
 
         localStorage.setItem('CardCounter', ++CardCounter);
 
+        //Sending data to the database
+        var cardObjectString = JSON.stringify(CardObject);
+        PostJson('/card/postjson', cardObjectString);
+        console.log(cardObjectString);
+
     });
 }
 
@@ -150,29 +151,39 @@ function Dragger() {
 }
 
 function GetJson (url) {
-    var card;
-
     $.ajax({
         url: url,
         method: 'GET',
-        async: false,
         success: function (data) {
-            card = data;
+            console.log(data);
+            CardLoaderDatabase(data);
         }
     });
+}
 
-    return card;
+function PostJson (url, json) {
+    $.ajax({
+        url: url,
+        method: 'POST',
+        data: json,
+        success: function (data) {
+            console.log(data);
+        }
+    });
 }
 
 $(document).ready(function () {
     Initer();
+    GetJson("/card/getjson")
     Dragger();
     CardAdder();
     BoardAdder();
-    CardLoader();
+    // CardLoader();
     BoardLoader();
-    var card = GetJson('/card/json');
-    alert(card);
-    var board = GetJson('/board/json');
-    alert(board);
+    // var card = GetJson('/card/json');
+    // alert(card);
+    // var board = GetJson('/board/getjson');
+    // alert(board);
+    // var newCard = "{'CardId': 2, 'CardText': 'New card2', 'CardState': 'in-progress', 'CardBoard': 'New board'}";
+    // PostJson('/card/json', newCard);
 });

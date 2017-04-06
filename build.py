@@ -22,8 +22,6 @@ if __name__ == "__main__":
     proman.drop_table()
     proman.create_tables()
 
-    new_card = Card()
-    new_card.create(card_json = "{'CardId': 1, 'CardText': 'New card', 'CardState': 'in-progress',"
-                                "'CardBoard': 'New board'}")
-    new_board = Board()
-    new_board.create(board_json = "{'BoardId': 1, 'BoardName': 'New board'}")
+    # Card().create(card_json="{'CardId': 1, 'CardText': 'New card', 'CardState': 'in-progress',"
+    #                             "'CardBoard': 'New board'}")
+    # Board().create(board_json="{'BoardId': 1, 'BoardName': 'New board'}")

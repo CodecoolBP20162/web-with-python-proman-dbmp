@@ -1,1 +1,1 @@
-database, "user=username"
+Proman, "user=mate"
